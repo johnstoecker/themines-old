@@ -1,11 +1,14 @@
-Choose at least 2 for today:
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-<form action="{% url 'mining' %}" method="post">
+<form action="{% url 'current_mine' %}" method="post">
 {% csrf_token %}
 {% for activity in current_activities %}
   <!-- <li>{{ activity.text }}</li> -->
   <input type="checkbox" name="activity" id="activity{{ forloop.counter }}" value="{{ activity.id }}" />
   <label for="activity{{ forloop.counter }}">{{ activity.text }}</label><br />
+  {% for task in activity.tasks %}
+    <input type="checkbox" name="task" id="task{{ forloop.counter }}" value="{{ task.id }}" />
+    <label for="task{{ forloop.counter }}">{{ task.text }}</label><br />
+  {% endfor %}
 {% endfor %}
 <input type="submit" value="GO" />
 </form>

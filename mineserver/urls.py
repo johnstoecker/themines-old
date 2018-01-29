@@ -30,7 +30,8 @@ urlpatterns = [
     path('logout/', auth_views.logout, name="logout"),
     path('signup/', mine_views.signup, name="signup"),
     path('', mine_views.home, name="home"),
-    path('home/', mine_views.home, name="home")
+    path('home/', mine_views.home, name="home"),
+    path('mining/', mine_views.mining, name="mining")
 ]
 
 # from django.conf.urls import url
